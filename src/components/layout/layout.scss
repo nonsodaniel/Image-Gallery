@@ -1,8 +1,19 @@
 .navbar-wrap{
-
+    padding: 10px 0;
+    .brand-name{
+        font-size: 28px;
+    }
     .header-nav{
+        a{
+            color: white;
+        }
         li{
             margin-right: 30px;
+            a{
+                font-weight: 400;
+    font-size: 15px;
+            }
+           
         }
     }
 
