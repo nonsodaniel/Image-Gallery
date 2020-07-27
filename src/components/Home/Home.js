@@ -71,9 +71,18 @@ export class Home extends Component {
                 {
                     isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading...</h1>
                         : <>
-                            {images.map(image => (
-                                <HomeContent key={image.id} image={image} />
-                            ))}
+                            {
+                                images && images.map(image => {
+                                    return (
+                                        <div className="container-wrap"
+                                            style={{
+                                                backgroundImage: `url(${image.webformatURL})`
+                                            }}>
+                                            <HomeContent key={image.id} image={image} />
+                                        </div>
+                                    )
+                                })
+                            }
                         </>
                 }
             </Slider>
