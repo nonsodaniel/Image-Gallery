@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { Container, Button, Link } from 'react-floating-action-button'
 
 import Navbar from '../layout/Navbar'
 
@@ -38,6 +38,8 @@ export class Home extends Component {
             autoplay: true,
             slidesToShow: 1,
             slidesToScroll: 1,
+            swipeToSlide: true,
+
             responsive: [
                 {
                     breakpoint: 1024,
@@ -65,27 +67,49 @@ export class Home extends Component {
                 }
             ]
         };
+        if (isLoading) {
+            return (<h1 className="text-6xl text-center mx-auto mt-32">Loading...</h1>)
+        }
+
         return (
-            <Slider {...settings}>
+            <>
                 {!isLoading && images.length === 0 && <h1 className="text-6xl text-center mx-auto mt-32">No Images Found</h1>}
-                {
-                    isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading...</h1>
-                        : <>
-                            {
-                                images && images.map(image => {
-                                    return (
-                                        <div className="container-wrap"
-                                            style={{
-                                                backgroundImage: `url(${image.webformatURL})`
-                                            }}>
-                                            <HomeContent key={image.id} image={image} />
+                <div className='content-body'>
+                    <Slider {...settings}>
+                        {
+                            images && images.map(image => {
+                                console.log("images", image.webformatURL)
+                                return (
+                                    <div className="container-wrap" >
+                                        <div className="container-content" style={{ backgroundImage: `url(${image.webformatURL}),  linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))` }}>
+                                            {/* <HomeContent key={image.id} image={image} /> */}
+                                            Hello
+                                            <Container>
+                                                <Link href="#"
+                                                    tooltip="Create note link"
+                                                    icon="far fa-sticky-note" />
+                                                <Link href="#"
+                                                    tooltip="Add user link"
+                                                    icon="fas fa-user-plus" />
+                                                className="fab-item btn btn-link btn-lg text-white"
+            <Button
+                                                    tooltip="The big plus button!"
+                                                    icon="fas fa-plus"
+                                                    rotate={true}
+                                                    onClick={() => alert('FAB Rocks!')} />
+                                            </Container>
                                         </div>
-                                    )
-                                })
-                            }
-                        </>
-                }
-            </Slider>
+                                        {/* <img src={image.webformatURL} alt="photos" /> */}
+
+                                    </div>
+                                )
+                            })
+
+
+                        }
+                    </Slider>
+                </div>
+            </>
 
         )
     }
