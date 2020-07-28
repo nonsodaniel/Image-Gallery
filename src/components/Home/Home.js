@@ -81,27 +81,16 @@ export class Home extends Component {
                                 console.log("images", image.webformatURL)
                                 return (
                                     <div className="container-wrap" >
-                                        <div className="container-content" style={{ backgroundImage: `url(${image.webformatURL}),  linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))` }}>
+                                        <div className="container-content"
+                                            style={{ backgroundImage: `url(${image.webformatURL})` }}>
+                                            {/* style={{ backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url(${image.webformatURL})` }}> */}
+
                                             {/* <HomeContent key={image.id} image={image} /> */}
-                                            Hello
-                                            <Container>
-                                                <Link href="#"
-                                                    tooltip="Create note link"
-                                                    icon="far fa-sticky-note" />
-                                                <Link href="#"
-                                                    tooltip="Add user link"
-                                                    icon="fas fa-user-plus" />
-                                                className="fab-item btn btn-link btn-lg text-white"
-            <Button
-                                                    tooltip="The big plus button!"
-                                                    icon="fas fa-plus"
-                                                    rotate={true}
-                                                    onClick={() => alert('FAB Rocks!')} />
-                                            </Container>
                                         </div>
                                         {/* <img src={image.webformatURL} alt="photos" /> */}
 
                                     </div>
+
                                 )
                             })
 
@@ -109,6 +98,21 @@ export class Home extends Component {
                         }
                     </Slider>
                 </div>
+                <Container>
+                    <Link href="#"
+                        tooltip="Create note link"
+                        icon="fa fa-sticky-note" />
+                    <Link href="#"
+                        tooltip="Add user link"
+                        icon="fa fa-user-plus" />
+                    {/* className="fab-item btn btn-link btn-lg text-white" */}
+                    <Button
+                        tooltip="The big plus button!"
+                        icon="fa fa-plus"
+                        rotate={true}
+                    // onClick={() => alert('FAB Rocks!')}
+                    />
+                </Container>
             </>
 
         )
